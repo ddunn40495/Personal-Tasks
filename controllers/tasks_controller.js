@@ -26,7 +26,7 @@ const Task = require('../models/task.js')
 /* ===========
 GET ROUTE
 ============= */
-//NEW tasks
+//NEW TASKS
 tasks.get('/new', (req, res) => {
     res.render('tasks/tasks_new.ejs')
   })
@@ -35,13 +35,16 @@ tasks.get('/new', (req, res) => {
 /* ===========
 POST ROUTE
 ============= */
-//CREATE tasks
+//CREATE TASKS
 tasks.post('/', async (req, res) => {
+    if(req.body.completed === 'on'){ 
+    req.body.completed = true;
+} else { 
+    req.body.completed = false;
+}
     try {
         const tasks = await Task.create(req.body)
-        res.redirect('/tasks/' + tasks.id, {
-            tasks: tasks
-        })
+        res.redirect('/tasks')
     } catch (error) {
         res.send(error)
     }
@@ -51,7 +54,7 @@ tasks.post('/', async (req, res) => {
 /* ===========
 GET ROUTE
 ============= */
-//INDEX tasks
+//INDEX TASKS
 tasks.get('/', async (req, res) => {
    try {
        const tasks = await Task.find({})
@@ -70,27 +73,27 @@ tasks.get('/', async (req, res) => {
 /* ===========
 GET ROUTE
 ============= */
-//SHOW tasks
-tasks.get('/:id', async (req, res) => {
-    try {
-        const tasks = await Task.findById(req.params.id)
-        res.render('tasks/tasks_show.ejs', {
-            tasks: tasks
-        })
-    } catch (error) {
-        res.send(error)
-    }
-  })
+//SHOW TASKS
+// tasks.get('/:id', async (req, res) => {
+//     try {
+//         const tasks = await Task.findById(req.params.id)
+//         res.render('tasks/tasks_show.ejs', {
+//             tasks: tasks
+//         })
+//     } catch (error) {
+//         res.send(error)
+//     }
+//   })
 
 
 /* ===========
 PUT ROUTE
 ============= */
-//UPDATE tasks
+//UPDATE TASKS
 tasks.put('/:id', async (req, res) => {
     try {
         const tasks = await Task.findByIdAndUpdate(req.params.id, req.body, {new:true})
-        res.redirect('/tasks/' + tasks.id )
+        res.redirect('/tasks')
     } catch (error) {
         res.send(error)
     }
@@ -100,12 +103,17 @@ tasks.put('/:id', async (req, res) => {
 /* ===========
 GET ROUTE
 ============= */
-//EDIT tasks
+//EDIT TASKS
 tasks.get('/:id/edit', async (req, res) => {
+    if(req.body.completed === 'on'){ 
+        req.body.completed = true;
+    } else { 
+        req.body.completed = false;
+    }
     try {
-        const tasks = await Task.findById(req.params)
+        const task = await Task.findById(req.params.id)
         res.render('tasks/tasks_edit.ejs', {
-            tasks: tasks
+            task: task
         })
     } catch (error) {
         res.send(error)
@@ -116,7 +124,7 @@ tasks.get('/:id/edit', async (req, res) => {
 /* ===========
 DELETE ROUTE
 ============= */
-//DELETE tasks
+//DELETE TASKS
 tasks.delete('/:id', async (req, res) => {
     try {
         await Task.findByIdAndRemove(req.params.id)

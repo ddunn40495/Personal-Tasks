@@ -67,7 +67,7 @@ GET ROUTE
 ============= */
 //DASH
 app.get('/', (req, res) => {
-    res.send('<a href="/events">Events</a>')
+    res.send('<a href="/events">Events</a>                       <a href="/tasks">Tasks</a>')
 })
 
 
