@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head.ejs') %>
+</head>
+<body>
+    <nav>
+        <%- include ('../partials/nav.ejs') %>
+    </nav>
+    <h1>EDIT GRADES</h1>
+        <form action="/school/grades/<%=grades._id%>?_method=PUT" method="POST">
+            Name: <input type="text" name="name" value="<%=grades._id%>" /><br/>
+            Course: <input type="text" name="class" value="<%=grades.class%>" /><br/>
+            Type: <input type="text" name="category" value="<%=grades.category%>" /><br/>
+            Grade: <input type="number" name="grade"  /><br/>
+            Date Due: <input type="date" name="dateDue"  /><br/>
+            Date Submitted: <input type="date" name="dateSubmitted"  /><br/>
+            
+            <input type="submit" name="" value="Finish and Submit"/>
+        </form>
+    <footer>
+        <%- include ('../partials/footer.ejs') %>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head.ejs') %>
+</head>
+<body>
+    <nav>
+        <%- include ('../partials/nav.ejs') %>
+    </nav>
+    <h1>EDIT EVENTS</h1>
+        <div class="container">
+            <div class="row">
+                <form action="/events/<%=event._id%>?_method=PUT" method="POST" class="col s12">
+                  <div class="row">
+                    <div class="input-field col s6">
+                        <input name="name" value="<%=event.name%>" id="event-name" type="text" class="validate">
+                        <label for="event-name">Name</label>
+                      </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                        <input name="date" value="<%=event.date%>" id="event-date" type="date" class="validate">
+                        <label for="event-date">Date</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <select name="category">
+                          <option value="" disabled selected>Choose your option</option>
+                          <% for(let i = 0; i < items.length; i++){ %>
+                            <option value="<%= items[i] %>"><%= items[i] %></option>
+                            <% } %>
+                        </select>
+                        <label>Select Category</label>
+                      </div>
+                  </div>
+                  <input type="submit" name="" value="Submit"/>        
+                </form>
+              </div>
+
+        </div>
+    <footer>
+        <%- include ('../partials/footer.ejs') %>
+    </footer>
+</body>
+</html>
