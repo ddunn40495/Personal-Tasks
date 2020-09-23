@@ -7,28 +7,40 @@
     <nav>
         <%- include ('../partials/nav.ejs') %>
     </nav>
-    <h1>NEW TASKS</h1>
+    <a href="/tasks" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Tasks</a>
+
         <div class="container">
-            <div class="row">
-                <form action="/tasks" method="POST" class="col s12">
-                
-                  <div class="row">
-                    <div class="input-field col s6">
-                        
-                      Name: <input name="name" id="task-name" type="name" class="validate">
-                        
-                      </div>
-                      <div class="input-field col s6">
-                          <p>
-                        <label for="task-status">Is it Completed
-                        <input name="completed"  id="task-status" type="checkbox" >
-                        <span>yes or no</span></label>
-                    </p>
-                      </div>
+
+    <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">NEW TASKS</span>
+          <div class="row">
+            <form action="/tasks" method="POST" class="col s12">
+            
+              <div class="row">
+                <div class="input-field col s6">
+                    
+                  Name: <input name="name" id="task-name" type="name" class="validate">
+                    
                   </div>
-                  <input type="submit" name="" value="Submit"/>        
-                </form>
+                  <div class="input-field col s6">
+                      <p>
+                    <label class="white-text" for="task-status">Is it Completed
+                    <input name="completed"  id="task-status" type="checkbox" >
+                    <span>yes or no</span></label>
+                </p>
+                  </div>
               </div>
+              <button class="btn waves-effect waves-light" type="submit" name="action" value="Submit">Submit
+                <i class="material-icons right">send</i>
+              </button>
+                
+            </form>
+          </div>
+        </div>
+  
+      </div>
+  
 
         </div>
     <footer>

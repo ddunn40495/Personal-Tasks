@@ -1,0 +1,24 @@
+nav {
+    background-color: #625261;
+}
+
+body {
+    background-color: #89beb3;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.all-cards {
+    background-color: #a6a6a4;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+.card-text{
+    color: antiquewhite;
+}
+
+.headline {
+    width: 21.875rem;
+}

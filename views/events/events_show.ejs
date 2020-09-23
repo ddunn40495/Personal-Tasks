@@ -7,18 +7,35 @@
     <nav>
         <%- include ('../partials/nav.ejs') %>
     </nav>
-    <h1>SHOW </h1>
-        <h1><%= event.name %></h1>
+    <a href="/events" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Events</a>
+    <div class="container">
+
+   
+
+    <div class="row">
+       
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title"><%= event.name %></span>
+              <h3><%= event.date %></h3>
+              <h3><%= event.due %></h3>
+              <h3><%= event.category %></h3>
+              
+              <a class="waves-effect waves-light btn" href="/events/<%= event.id %>/edit">EDIT</a>
+              <form action="/events/<%=event.id%>?_method=DELETE" method="POST">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Delete
+                    <i class="material-icons right">send</i>
+                  </button>
                 
+              </form>
+            </div>
+            
+          </div>
+        </div>
+    
                 
-        <h3><%= event.date %></h3>
-        <h3><%= event.due %></h3>
-        <h3><%= event.category %></h3>
-        
-        <a href="/events/<%= event.id %>/edit">EDIT</a>
-        <form action="/events/<%=event.id%>?_method=DELETE" method="POST">
-            <input type="submit" value="DELETE"/>
-        </form>
+    </div>          
+  
     <footer>
         <%- include ('../partials/footer.ejs') %>
     </footer>

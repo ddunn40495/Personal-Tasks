@@ -74,16 +74,16 @@ tasks.get('/', async (req, res) => {
 GET ROUTE
 ============= */
 //SHOW TASKS
-// tasks.get('/:id', async (req, res) => {
-//     try {
-//         const tasks = await Task.findById(req.params.id)
-//         res.render('tasks/tasks_show.ejs', {
-//             tasks: tasks
-//         })
-//     } catch (error) {
-//         res.send(error)
-//     }
-//   })
+tasks.get('/:id', async (req, res) => {
+    try {
+        const task = await Task.findById(req.params.id)
+        res.render('tasks/tasks_show.ejs', {
+            task: task
+        })
+    } catch (error) {
+        res.send(error)
+    }
+  })
 
 
 /* ===========

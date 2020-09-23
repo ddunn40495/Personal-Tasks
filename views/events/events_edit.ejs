@@ -7,35 +7,50 @@
     <nav>
         <%- include ('../partials/nav.ejs') %>
     </nav>
-    <h1>EDIT EVENTS</h1>
-        <div class="container">
-            <div class="row">
-                <form action="/events/<%=event._id%>?_method=PUT" method="POST" class="col s12">
-                  <div class="row">
-                    <div class="input-field col s6">
-                        <input name="name" value="<%=event.name%>" id="event-name" type="text" class="validate">
-                        <label for="event-name">Name</label>
-                      </div>
+    <a href="/events" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Events</a>
 
-                  </div>
-                  <div class="row">
+
+        <div class="container">
+
+        <div class="card blue-grey darken-1">
+          <div class="card-content ">
+            <span class="card-title white-text">EDIT EVENTS</span>
+            <div class="row">
+              <form action="/events/<%=event._id%>?_method=PUT" method="POST" class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                      <input name="name" value="<%=event.name%>" id="event-name" type="text" class="validate white-text">
+                      <label class="white-text" for="event-name">Name</label>
+                    </div>
+
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input name="date" id="event-date" type="text" class="datepicker">
+                    <label class="white-text" for="event-date">Date</label>
+                    </div>
                     <div class="input-field col s6">
-                        <input name="date" value="<%=event.date%>" id="event-date" type="date" class="validate">
-                        <label for="event-date">Date</label>
-                      </div>
-                      <div class="input-field col s6">
-                        <select name="category">
-                          <option value="" disabled selected>Choose your option</option>
-                          <% for(let i = 0; i < items.length; i++){ %>
-                            <option value="<%= items[i] %>"><%= items[i] %></option>
-                            <% } %>
-                        </select>
-                        <label>Select Category</label>
-                      </div>
-                  </div>
-                  <input type="submit" name="" value="Submit"/>        
-                </form>
-              </div>
+                      <select name="category">
+                        <option value="" disabled selected>Choose your option</option>
+                        <% for(let i = 0; i < items.length; i++){ %>
+                          <option value="<%= items[i] %>"><%= items[i] %></option>
+                          <% } %>
+                      </select>
+                      <label class="white-text">Select Category</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action" value="Submit">Submit
+                  <i class="material-icons right">send</i>
+                </button>     
+              </form>
+            </div>
+
+       
+          </div>
+
+        </div>
+
+            
 
         </div>
     <footer>

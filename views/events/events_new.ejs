@@ -7,43 +7,51 @@
     <nav>
         <%- include ('../partials/nav.ejs') %>
     </nav>
-    <h1>NEW EVENTS</h1>
+    <a href="/events" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Events</a>
         <div class="container">
-            <div class="row">
-                <form action="/events" method="POST" class="col s12">
-                  <div class="row">
-                    <div class="input-field col s6">
-                        <input name="name" id="event-name" type="text" class="validate">
-                        <label for="event-name">Name</label>
+           
+                <div class="card blue-grey darken-1 ">
+                  <div class="card-content ">
+                    <span class="card-title white-text">New Event</span>
+                    <form action="/events" method="POST" class="col s12">
+                      <div class="row">
+                        <div class="input-field col s6">
+                            <input name="name" id="event-name" type="text" class="validate">
+                            <label class="white-text" for="event-name">Name</label>
+                          </div>
+    
                       </div>
-
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                        <input name="date" id="event-date" type="date" class="validate">
-                        <label for="event-date">Date</label>
+                      <div class="row">
+                        <div class="input-field col s6">
+                            <input name="date" id="event-date" type="text" class="datepicker">
+                            <label class="white-text" for="event-date">Date</label>
+                          </div>
                       </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
+                      <div class="row">
+                        <div class="input-field col s6">
+                            
+                            <select  name="category">
+                                <option class="white-text" value="" disabled selected>Choose Category</option>
+                              <% for(let i = 0; i < items.length; i++){ %>
+                                <option value="<%= items[i] %>"><%= items[i] %></option>
+                                <% } %>
+                            </select>
+                            <label class="white-text">Select Category</label>
+                          </div>
                         
-                        <select name="category">
-                            <option value="" disabled selected>Choose Category</option>
-                          <% for(let i = 0; i < items.length; i++){ %>
-                            <option value="<%= items[i] %>"><%= items[i] %></option>
-                            <% } %>
-                        </select>
-                        <label>Select Category</label>
+    
                       </div>
                     
-
+                      
+                    
+                      <button class="btn waves-effect waves-light" type="submit" name="action" value="Submit">Submit
+                        <i class="material-icons right">send</i>
+                      </button> 
+                    </form>
                   </div>
-                
-                  
-                
-                  <input type="submit" name="" value="Submit"/>  
-                </form>
-              </div>
+
+                </div>
+              
 
         </div>
     <footer>
